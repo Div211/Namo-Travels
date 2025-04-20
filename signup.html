@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namo Travels</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+    <video autoplay muted loop id="signupvideo">
+        <source src="Namo Bharath sign up.mp4" type="video/mp4">
+    </video>
+
+    <div class="welcome-message">
+        <h1>Namo Travels Welcomes You</h1>
+    </div>
+
+    <div class="signup-container">
+        <h2>Create Your Account</h2>
+        <p>Join Namo Travels And Start To Capture Your Destiny.</p>
+        <form action="signup.java" method="post">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+
+            <label for="email">Email or Phone Number</label>
+            <input type="email" id="email" placeholder="Enter your email or phone number" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+
+            <button type="submit" class="signup">Sign Up</button>
+
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </form>
+
+
+        <script>
+            document.querySelector("form").addEventListener("submit", function (query) {
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("password").value;
+                const confirmPassword = document.getElementById("confirm-password").value;
+
+                // Basic email and phone pattern
+                const isEmail = email.includes("@");
+                const isPhone = /^\d{10}$/.test(email);
+
+                // Check if password matches confirm password
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match.");
+                    query.preventDefault();
+                } else if (!isEmail && !isPhone) {
+                    alert("Please enter a valid email or 10-digit phone number.");
+                    query.preventDefault();
+                } else if (password.length < 8) {
+                    alert("Password must be at least 8 characters long.");
+                    query.preventDefault();
+                }
+            });
+        </script>
+</body>
+</html>

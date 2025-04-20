@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namo Travels</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="Namo Bharath.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="welcome-message">
+        <h1>Namo Travels Welcomes You</h1>
+      </div>
+    <div class="login-container">
+        <h2>Welcome Back Travellers....</h2>
+        <p>Login To Board Your Destiny.</p>
+        <form>
+            <label for="email">Email or Phone Number</label>
+            <input type="email" id="email" placeholder="Enter your email or phone number" required>
+            
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+
+            <label for="remember">Remember me</label>
+            <input type="checkbox" name="remember" id="remember">
+
+            <label for="forgot-password"></label>
+            <a href="#">Forgot Password?</a>
+
+            <button type="submit" class="login">Login</button>
+
+            <p>Don't Have An Account? <a href="signup.html">Sign Up</a></p>
+        </form>
+
+        <script>
+            document.querySelector("form").addEventListener("submit", function (query) {
+              const email = document.getElementById("email").value.trim();  //trim removes accidental spaces before or after the email/phone number. value to read the input.
+              const password = document.getElementById("password").value;
+          
+              // Basic email and phone pattern
+              const isEmail = email.includes("@");
+              const isPhone = /^\d{10}$/.test(email);
+          
+              // Password must be at least 8 characters
+              if (!isEmail && !isPhone) {
+                alert("Please enter a valid email or 10-digit phone number.");
+                query.preventDefault();
+              } else if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                query.preventDefault();
+              }
+            });
+        </script>
+    </div>
+</body>
+</html>
